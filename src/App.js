@@ -8,7 +8,7 @@ import { Router } from '@reach/router';
 export const App = () => {
   const urlParams = new window.URLSearchParams(window.location.search);
   const detailId = urlParams.get('detail');
-  console.log(detailId);
+  // console.log(detailId);
 
   return (
     <>
@@ -19,7 +19,7 @@ export const App = () => {
       ) : (
         <Router>
           <Home path="/" />
-          <Home path="/pet/:id" />
+          <Home path="/pet/:categoryId" />
         </Router>
       )}
     </>
