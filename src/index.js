@@ -4,6 +4,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
 import { App } from './App';
+import Context from './Context';
 
 const cache = new InMemoryCache();
 
@@ -17,8 +18,10 @@ const client = new ApolloClient({
 });
 
 ReactDom.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <Context.Provider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Context.Provider>,
   document.getElementById('app')
 );
