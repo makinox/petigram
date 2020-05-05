@@ -18,7 +18,7 @@ export const App = () => {
       <Logo />
       <Context.Consumer>
         {({ isAuth }) => {
-          console.log(isAuth);
+          // console.log(isAuth);
           return (
             <Router>
               <NotFound default />

@@ -4,6 +4,7 @@ import { Img, ImgWrapper, Article } from './styles';
 import { FavButton } from '../FavButton/FavButton';
 import { ToggleLikeMutation } from '../../containers/ToggleLikeMutation';
 import { Link } from '@reach/router';
+import PropTypes from 'prop-types';
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png';
 
 export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE }) => {
@@ -34,4 +35,11 @@ export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE }) => {
       )}
     </Article>
   );
+};
+
+PhotoCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  src: PropTypes.string.isRequired,
+  likes: PropTypes.number.isRequired,
 };
