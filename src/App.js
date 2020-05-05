@@ -1,19 +1,19 @@
-import React from 'react';
-import { Home } from './pages/Home';
-import { User } from './pages/User';
-import { Favs } from './pages/Favs';
-import { Router, Redirect } from '@reach/router';
-import { Detail } from './pages/Detail';
-import { Logo } from './components/Logo/Logo';
-import { NavBar } from './components/NavBar/NavBar';
-import { NotRegisteredUser } from './pages/NotRegisteredUser';
-import { GlobalStyles } from './styles/globalStyles';
-import { NotFound } from './pages/NotFound';
+import React, { Suspense } from 'react';
 import Context from './Context';
+import { Home } from './pages/Home';
+import { Detail } from './pages/Detail';
+import { NotFound } from './pages/NotFound';
+import { Logo } from './components/Logo/Logo';
+import { Router, Redirect } from '@reach/router';
+import { NavBar } from './components/NavBar/NavBar';
+import { GlobalStyles } from './styles/globalStyles';
+import { NotRegisteredUser } from './pages/NotRegisteredUser';
+const User = React.lazy(() => import('./pages/User'));
+const Favs = React.lazy(() => import('./pages/Favs'));
 
 export const App = () => {
   return (
-    <>
+    <Suspense fallback={<div />}>
       <GlobalStyles />
       <Logo />
       <Context.Consumer>
@@ -36,6 +36,6 @@ export const App = () => {
         }}
       </Context.Consumer>
       <NavBar />
-    </>
+    </Suspense>
   );
 };
