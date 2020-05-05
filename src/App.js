@@ -2,38 +2,38 @@ import React from 'react';
 import { Home } from './pages/Home';
 import { User } from './pages/User';
 import { Favs } from './pages/Favs';
-import { Router } from '@reach/router';
+import { Router, Redirect } from '@reach/router';
 import { Detail } from './pages/Detail';
 import { Logo } from './components/Logo/Logo';
 import { NavBar } from './components/NavBar/NavBar';
 import { GlobalStyles } from './styles/globalStyles';
 import { NotRegisteredUser } from './pages/NotRegisteredUser';
 import Context from './Context';
+import { NotFound } from './pages/NotFound';
 
 export const App = () => {
   return (
     <>
       <GlobalStyles />
       <Logo />
-      <Router>
-        <Home path="/" />
-        <Home path="/pet/:categoryId" />
-        <Detail path="/detail/:categoryId" />
-      </Router>
       <Context.Consumer>
-        {({ isAuth }) =>
-          isAuth ? (
+        {({ isAuth }) => {
+          console.log(isAuth);
+          return (
             <Router>
-              <User path="/user" />
+              <NotFound default />
+              <Home path="/" />
+              <Home path="/pet/:categoryId" />
+              <Detail path="/detail/:categoryId" />
+              {!isAuth && <NotRegisteredUser path="/login" />}
+              {!isAuth && <Redirect noThrow from="/favs" to="/login" />}
+              {!isAuth && <Redirect noThrow from="/user" to="/login" />}
+              {isAuth && <Redirect noThrow from="/login" to="/" />}
               <Favs path="/favs" />
+              <User path="/user" />
             </Router>
-          ) : (
-            <Router>
-              <NotRegisteredUser path="/user" />
-              <NotRegisteredUser path="/favs" />
-            </Router>
-          )
-        }
+          );
+        }}
       </Context.Consumer>
       <NavBar />
     </>
