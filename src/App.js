@@ -6,10 +6,10 @@ import { Router, Redirect } from '@reach/router';
 import { Detail } from './pages/Detail';
 import { Logo } from './components/Logo/Logo';
 import { NavBar } from './components/NavBar/NavBar';
-import { GlobalStyles } from './styles/globalStyles';
 import { NotRegisteredUser } from './pages/NotRegisteredUser';
-import Context from './Context';
+import { GlobalStyles } from './styles/globalStyles';
 import { NotFound } from './pages/NotFound';
+import Context from './Context';
 
 export const App = () => {
   return (
