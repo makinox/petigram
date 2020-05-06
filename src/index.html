@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petigram</title>
-</head>
-<body>
-    <div id="app"></div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Petigram</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <noscript>
+            <h3>Esta app necesita js para funcionar</h3>
+        </noscript>
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker
+                        .register('/service-worker.js')
+                        .then((res) => console.log('SW up', res))
+                        .catch((res) => console.log('SW down', res));
+                });
+            }
+        </script>
+    </body>
 </html>
