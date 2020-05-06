@@ -25,7 +25,6 @@ module.exports = {
       display: 'standalone',
       start_url: '/',
       scope: '/',
-      filename: 'manifest.webmanifest',
       icons: [
         {
           src: path.resolve(__dirname, 'src/assets/icon.png'),
