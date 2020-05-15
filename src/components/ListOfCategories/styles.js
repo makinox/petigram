@@ -3,6 +3,7 @@ import { fadeIn } from '../../styles/animation';
 
 export const List = styled.ul`
   display: flex;
+  justify-content: center;
   overflow: scroll;
   width: 100%;
 
